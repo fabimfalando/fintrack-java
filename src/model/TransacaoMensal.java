@@ -1,9 +1,9 @@
 package model;
 
-public class TrasacaoMensal extends Transacao {
+public class TransacaoMensal extends Transacao {
     private int diaVencimento;
 
-    public TrasacaoMensal(String descricao, double valor, String tipo, int diaVencimento) {
+    public TransacaoMensal(String descricao, double valor, String tipo, int diaVencimento) {
         super(descricao, valor, tipo);
         this.diaVencimento = diaVencimento;
     }
@@ -12,7 +12,7 @@ public class TrasacaoMensal extends Transacao {
         return diaVencimento;
     }
     @Override
-    public String exibirDetales(){
+    public String exibirDetalhes(){
         return super.exibirDetalhes() + "(Recorrente - Dia: "+ diaVencimento + ")";
     }
 }

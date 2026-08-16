@@ -27,3 +27,9 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+# Arquivos do IntelliJ
+.idea/
+*.iml
+
+# Arquivos compilados do Java
+out/

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/FinTrackCLT.iml" filepath="$PROJECT_DIR$/FinTrackCLT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FinTrackerCLT.iml" filepath="$PROJECT_DIR$/FinTrackerCLT.iml" />
     </modules>
   </component>
 </project>
