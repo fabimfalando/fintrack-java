@@ -1,6 +1,6 @@
 package model;
 
-import utils.Formatador;
+import java.time.LocalDate;
 
 public class Transacao {
     private static int contadorId = 1;
@@ -9,14 +9,27 @@ public class Transacao {
     private String descricao;
     private double valor;
     private String tipo;
+    private LocalDate data;
 
-    public Transacao(String descricao, double valor, String tipo) {
+    // Construtor principal (4 parâmetros)
+    public Transacao(String descricao, double valor, String tipo, LocalDate data) {
         this.Id = contadorId++;
         this.descricao = descricao;
         this.valor = valor;
-        this.tipo = tipo.toUpperCase();
+        this.tipo = (tipo != null) ? tipo.toUpperCase() : "";
+        this.data = (data != null) ? data : LocalDate.now();
     }
 
+    // Construtor com ID (útil para quando o SQLite carrega do banco de dados)
+    public Transacao(int id, String descricao, double valor, String tipo, LocalDate data) {
+        this.Id = id;
+        this.descricao = descricao;
+        this.valor = valor;
+        this.tipo = (tipo != null) ? tipo.toUpperCase() : "";
+        this.data = (data != null) ? data : LocalDate.now();
+    }
+
+    // Getters e Setters necessários para a TableView do JavaFX
     public int getId() {
         return Id;
     }
@@ -33,7 +46,11 @@ public class Transacao {
         return tipo;
     }
 
+    public LocalDate getData() {
+        return data;
+    }
+
     public String exibirDetalhes() {
-        return String.format("[%d] %s-%s: %s", Id, tipo, descricao, Formatador.formatarMoeda(valor));
+        return String.format("[%d] %s - %s: R$ %.2f (%s)", Id, tipo, descricao, valor, data);
     }
 }

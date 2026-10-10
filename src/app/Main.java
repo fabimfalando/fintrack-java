@@ -4,11 +4,14 @@ import controller.FinTracker;
 import exceptions.EntradaInvalidaException;
 import model.Transacao;
 import model.TransacaoMensal;
+
+import java.time.LocalDate;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        dao.Conexao.inicializarBanco();
         Scanner scanner = new Scanner(System.in);
         FinTracker tracker = new FinTracker();
         boolean executando = true;
@@ -45,9 +48,11 @@ public class Main {
                             System.out.print("Dia do vencimento: ");
                             int dia = scanner.nextInt();
                             scanner.nextLine();
-                            tracker.adicionarTransacao(new TransacaoMensal(desc, valor, tipo, dia));
+                            // 4º argumento é a data, 5º é o dia
+                            tracker.adicionarTransacao(new TransacaoMensal(desc, valor, tipo, java.time.LocalDate.now(), dia));
                         } else {
-                            tracker.adicionarTransacao(new Transacao(desc, valor, tipo));
+                            // 4º argumento é a data
+                            tracker.adicionarTransacao(new Transacao(desc, valor, tipo, java.time.LocalDate.now()));
                         }
                         break;
 
